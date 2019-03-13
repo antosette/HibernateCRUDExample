@@ -11,7 +11,6 @@ import com.marconivr.hibernatecrudexample.entities.Studente;
 import com.marconivr.hibernatecrudexample.entities.Voto;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 
