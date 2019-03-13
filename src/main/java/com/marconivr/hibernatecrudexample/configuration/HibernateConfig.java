@@ -5,6 +5,7 @@
  */
 package com.marconivr.hibernatecrudexample.configuration;
 
+import com.marconivr.hibernatecrudexample.entities.Progetto;
 import com.marconivr.hibernatecrudexample.entities.Studente;
 import com.marconivr.hibernatecrudexample.entities.Voto;
 import java.util.Properties;
@@ -39,6 +40,7 @@ public class HibernateConfig {
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(Studente.class); //add entity Studente to model 
                 configuration.addAnnotatedClass(Voto.class); //add entity Voto to model 
+                configuration.addAnnotatedClass(Progetto.class); //add entity Voto to model 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry);

@@ -6,13 +6,18 @@
 package com.marconivr.hibernatecrudexample.entities;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -39,6 +44,14 @@ public class Studente {
   private Date dataDiNascita;
   @OneToMany(fetch = FetchType.EAGER, mappedBy="studente") //EAGER: carico i voti associati a uno studenti insieme alle altre proprietà.
   private Set<Voto> voti;
+  
+  @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+  @JoinTable(
+       name = "studenti_progetti", 
+       joinColumns = { @JoinColumn(name = "ID_STUDENTI") }, 
+       inverseJoinColumns = { @JoinColumn(name = "ID_PROGETTI") }
+   )
+  Set<Progetto> progetti = new HashSet<>();
   
   public Studente() {
   }
@@ -97,5 +110,14 @@ public class Studente {
     public void setVoti(Set<Voto> voti) {
         this.voti = voti;
     }
+
+    public Set<Progetto> getProgetti() {
+        return progetti;
+    }
+
+    public void setProgetti(Set<Progetto> progetti) {
+        this.progetti = progetti;
+    }
+    
     
 }
