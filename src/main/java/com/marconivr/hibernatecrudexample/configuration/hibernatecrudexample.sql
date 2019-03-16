@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 16, 2019 alle 12:24
+-- Creato il: Mar 16, 2019 alle 16:50
 -- Versione del server: 10.1.37-MariaDB
 -- Versione PHP: 7.3.1
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `hibernatecrudexample`
 --
+CREATE DATABASE IF NOT EXISTS `hibernatecrudexample` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `hibernatecrudexample`;
 
 -- --------------------------------------------------------
 
@@ -28,6 +30,7 @@ SET time_zone = "+00:00";
 -- Struttura della tabella `progetti`
 --
 
+DROP TABLE IF EXISTS `progetti`;
 CREATE TABLE `progetti` (
   `ID` int(11) NOT NULL,
   `TITOLO` text NOT NULL
@@ -48,6 +51,7 @@ INSERT INTO `progetti` (`ID`, `TITOLO`) VALUES
 -- Struttura della tabella `studenti`
 --
 
+DROP TABLE IF EXISTS `studenti`;
 CREATE TABLE `studenti` (
   `ID` int(11) NOT NULL,
   `NOME` text NOT NULL,
@@ -70,6 +74,7 @@ INSERT INTO `studenti` (`ID`, `NOME`, `COGNOME`, `CLASSE`, `DATA_DI_NASCITA`) VA
 -- Struttura della tabella `studenti_progetti`
 --
 
+DROP TABLE IF EXISTS `studenti_progetti`;
 CREATE TABLE `studenti_progetti` (
   `ID_STUDENTI` int(11) NOT NULL,
   `ID_PROGETTI` int(11) NOT NULL
@@ -91,6 +96,7 @@ INSERT INTO `studenti_progetti` (`ID_STUDENTI`, `ID_PROGETTI`) VALUES
 -- Struttura della tabella `voti`
 --
 
+DROP TABLE IF EXISTS `voti`;
 CREATE TABLE `voti` (
   `ID` int(11) NOT NULL,
   `VOTO` int(11) NOT NULL,
