@@ -21,13 +21,7 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.11</version>
         </dependency>
-        <dependency>
-            <groupId>com.mmarconivr</groupId>
-            <artifactId>HibernateCRUDExample</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>test</scope>
-            <type>jar</type>
-        </dependency>
+       
 
     </dependencies>
      <build>
