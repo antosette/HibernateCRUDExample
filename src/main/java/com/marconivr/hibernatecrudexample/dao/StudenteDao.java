@@ -4,6 +4,7 @@ package com.marconivr.hibernatecrudexample.dao;
  * @author Antonio
  */
 import com.marconivr.hibernatecrudexample.configuration.HibernateConfig;
+import com.marconivr.hibernatecrudexample.entities.Progetto;
 import com.marconivr.hibernatecrudexample.entities.Studente;
 import java.util.List;
 import org.hibernate.Session;
@@ -25,7 +26,7 @@ public class StudenteDao {
                      break;
             case 3: //UPDATE
                     session.update(studente);
-                     break;
+                    break;
             default: throw new Exception ("Invalid queryType");
         }
             // commit transazione
@@ -65,6 +66,13 @@ public class StudenteDao {
     public List <Studente> getStudenti() {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
             return session.createQuery("from Studente", Studente.class).list();
+        }
+    }
+    
+    public void aggiungiStudenteAProgetto(Studente s, Progetto p) {
+         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
+            s.addProgetto(p);
+            session.persist(s);
         }
     }
 }

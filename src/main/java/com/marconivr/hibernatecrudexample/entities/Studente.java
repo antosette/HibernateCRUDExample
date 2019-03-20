@@ -7,6 +7,7 @@ package com.marconivr.hibernatecrudexample.entities;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -32,7 +33,7 @@ public class Studente {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "ID")
-  private int id;
+  private Integer id;
   
   @Column(name = "NOME")
   private String nome;
@@ -62,6 +63,19 @@ public class Studente {
       this.classe = classe;
       this.dataDiNascita = dataDiNascita;
   }
+  
+  /*
+     Commento sui metodi add/remove: the bidirectional associations should always be updated on both sides, therefore the Parent side should contain the addChild and removeChild combo. These methods ensure we always synchronize both sides of the association, to avoid object or relational data corruption issues.
+  */
+  public void addProgetto(Progetto p) {
+        progetti.add(p);
+        p.getStudenti().add(this);
+    }
+ 
+    public void removeProgetto(Progetto p) {
+        progetti.remove(p);
+        p.getStudenti().remove(this);
+    }
 
     public int getId() {
         return id;
@@ -117,6 +131,18 @@ public class Studente {
 
     public void setProgetti(Set<Progetto> progetti) {
         this.progetti = progetti;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Studente)) return false;
+        return id != null && id.equals(((Studente) o).id);
+    }
+ 
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome);
     }
     
     

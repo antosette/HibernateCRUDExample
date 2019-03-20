@@ -6,6 +6,7 @@
 package com.marconivr.hibernatecrudexample.entities;
 
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +27,7 @@ public class Voto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int id;
+    private Integer id;
 
     @Column(name = "VOTO")
     private int voto;
@@ -78,4 +79,15 @@ public class Voto {
         this.studente = studente;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Voto)) return false;
+        return id != null && id.equals(((Voto) o).id);
+    }
+ 
+    @Override
+    public int hashCode() {
+        return Objects.hash(voto);
+    }
 }

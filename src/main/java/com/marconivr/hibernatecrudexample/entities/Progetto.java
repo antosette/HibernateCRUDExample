@@ -6,6 +6,7 @@
 package com.marconivr.hibernatecrudexample.entities;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,7 +28,7 @@ public class Progetto {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "ID")
-  private int id;
+  private Integer id;
   
   @Column(name = "TITOLO")
   private String titolo;
@@ -65,5 +66,18 @@ public class Progetto {
     public void setStudenti(Set<Studente> studenti) {
         this.studenti = studenti;
     }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Progetto)) return false;
+        return id != null && id.equals(((Progetto) o).id);
+    }
+ 
+    @Override
+    public int hashCode() {
+        return Objects.hash(titolo);
+    }
+    
     
 }
