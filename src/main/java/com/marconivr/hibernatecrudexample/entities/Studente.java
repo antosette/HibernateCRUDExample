@@ -64,19 +64,6 @@ public class Studente {
       this.dataDiNascita = dataDiNascita;
   }
   
-  /*
-     Commento sui metodi add/remove: the bidirectional associations should always be updated on both sides, therefore the Parent side should contain the addChild and removeChild combo. These methods ensure we always synchronize both sides of the association, to avoid object or relational data corruption issues.
-  */
-  public void addProgetto(Progetto p) {
-        progetti.add(p);
-        p.getStudenti().add(this);
-    }
- 
-    public void removeProgetto(Progetto p) {
-        progetti.remove(p);
-        p.getStudenti().remove(this);
-    }
-
     public int getId() {
         return id;
     }

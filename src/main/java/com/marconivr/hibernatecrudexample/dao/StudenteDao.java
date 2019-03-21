@@ -69,10 +69,4 @@ public class StudenteDao {
         }
     }
     
-    public void aggiungiStudenteAProgetto(Studente s, Progetto p) {
-         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
-            s.addProgetto(p);
-            session.persist(s);
-        }
-    }
 }

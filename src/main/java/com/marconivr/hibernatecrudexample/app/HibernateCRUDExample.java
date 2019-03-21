@@ -69,9 +69,7 @@ public class HibernateCRUDExample {
         System.out.println("- Stampa nuovamente i voti del primo studente -");
         List<Studente> studenti = studenteDao.getStudenti();
         studente1 = studenteDao.getStudenteById(studenti.get(0).getId());
-        System.out.println("- Aggiungi anche il progetto 3 allo studente 1 -");
-        studenteDao.aggiungiStudenteAProgetto(studente1, progetto3);
-        System.out.println("- Recupera studenti, progetti e relativi voti dal database -");  
+           System.out.println("- Recupera studenti, progetti e relativi voti dal database -");  
         studenti.forEach((s) -> {
             System.out.println(s.getCognome() + " " + s.getNome());
             s.getVoti().forEach((v) -> {
