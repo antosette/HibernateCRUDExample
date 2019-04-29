@@ -5,8 +5,6 @@ package com.marconivr.hibernatecrudexample.dao;
  */
 import com.marconivr.hibernatecrudexample.configuration.HibernateConfig;
 import com.marconivr.hibernatecrudexample.entities.Progetto;
-import com.marconivr.hibernatecrudexample.entities.Studente;
-import com.marconivr.hibernatecrudexample.entities.Voto;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

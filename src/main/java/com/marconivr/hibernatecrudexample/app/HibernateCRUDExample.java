@@ -5,6 +5,7 @@
  */
 package com.marconivr.hibernatecrudexample.app;
 
+import com.marconivr.hibernatecrudexample.configuration.HibernateConfig;
 import com.marconivr.hibernatecrudexample.dao.ProgettoDao;
 import com.marconivr.hibernatecrudexample.dao.StudenteDao;
 import com.marconivr.hibernatecrudexample.dao.VotoDao;
@@ -93,7 +94,7 @@ public class HibernateCRUDExample {
                System.out.println("IdVoto: "+ v.getId() + " Data: " + v.getData() + " Voto: " + v.getVoto());
             });
         pulisciDB(studenti, votoDao, progettoDao, studenteDao); //commentare per non cancellare il database
-       
+        HibernateConfig.closeSession(); 
     }
 
     private static void pulisciDB(List<Studente> studenti, VotoDao votoDao, ProgettoDao progettoDao, StudenteDao studenteDao) {

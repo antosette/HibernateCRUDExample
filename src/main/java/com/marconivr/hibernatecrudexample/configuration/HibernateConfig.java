@@ -51,4 +51,8 @@ public class HibernateConfig {
         return sessionFactory;
     }
     
+    public static void closeSession() {
+        sessionFactory.close();
+    }
+    
 }
